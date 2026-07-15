@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * RockMyMusic design tokens
+ * Keep hex values in sync with tailwind.config.js → theme.extend.colors.rmm
+ * and src/theme/colors.js (for RN APIs that need raw color strings).
+ */
+:root {
+  --rmm-navy: #04203c;
+  --rmm-cyan: #00ffff;
+  --rmm-glow: #00e5ff;
+  --rmm-ink: #0d0d0d;
+  --rmm-muted: #9aa0a6;
+  --rmm-white: #ffffff;
+  --rmm-vinyl: hsl(210, 8%, 11%);
+  --rmm-radius-input: 12px;
+  --rmm-radius-btn: 4px;
+  --rmm-control-h: 64px;
+  --rmm-form-w: 300px;
+  --rmm-title-top: 72px;
+  --rmm-form-bottom: 124px --rmm-title-aspect: 723 / 170;
+}
+
+@layer components {
+
+  /* ——— Screens / shells ——— */
+  .screen-root {
+    @apply flex-1 bg-rmm-navy;
+  }
+
+  .screen-center {
+    @apply flex-1 items-center justify-center bg-rmm-vinyl overflow-hidden;
+  }
+
+  .fill-screen {
+    @apply absolute inset-0;
+  }
+
+  .intro-layer {
+    @apply absolute inset-0 z-intro;
+  }
+
+  /* ——— Login layout ——— */
+  .login-overlay {
+    @apply absolute inset-0 items-center justify-center;
+  }
+
+  .login-title-wrap {
+    @apply absolute left-0 right-0 top-title z-chrome items-center overflow-visible;
+  }
+
+  .login-figure-wrap {
+    @apply w-full h-figure mt-figure;
+  }
+
+  .login-figure {
+    @apply w-full h-full;
+  }
+
+  .login-form {
+    @apply absolute bottom-form w-form items-center gap-6 z-chrome;
+  }
+
+  .login-control {
+    @apply w-form h-control overflow-hidden;
+  }
+
+  .login-input-shell {
+    @apply w-form h-control rounded-input;
+  }
+
+  .login-input {
+    @apply w-full h-full rounded-input border-2 border-rmm-cyan bg-rmm-navy px-3.5 text-[15px] text-rmm-white;
+  }
+
+  /* ——— Brand title ——— */
+  .rock-title-wrap {
+    @apply w-full items-center justify-center py-4 overflow-visible;
+  }
+
+  .rock-title-image {
+    @apply w-title aspect-title;
+  }
+
+  /* ——— Loading / intro ——— */
+  .loading-screen {
+    @apply absolute inset-0 bg-rmm-navy overflow-hidden;
+  }
+
+  .loading-image {
+    @apply absolute inset-0 w-full h-full;
+  }
+
+  /* ——— Buttons ——— */
+  .btn-base {
+    @apply items-center justify-center;
+  }
+
+  .btn-google-image {
+    @apply w-full h-full border border-rmm-ink rounded-btn;
+  }
+
+  /* ——— Images ——— */
+  .img-frame {
+    @apply bg-rmm-transparent overflow-visible;
+  }
+
+  .img-fill {
+    @apply w-full h-full;
+  }
+
+  .img-bloom {
+    @apply absolute inset-0;
+  }
+}
