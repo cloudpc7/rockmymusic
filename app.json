@@ -2,6 +2,7 @@
   "expo": {
     "name": "rockmymusic",
     "slug": "rockmymusic",
+    "owner": "cloudpc7",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,6 +19,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "af7ab906-508f-493a-86e0-120895541deb"
+      }
     }
   }
 }
