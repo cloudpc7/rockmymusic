@@ -2,11 +2,24 @@
   "expo": {
     "name": "rockmymusic",
     "slug": "rockmymusic",
+    "scheme": "rockmymusic",
     "owner": "cloudpc7",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone.",
+          "enableBackgroundPlayback": true,
+          "enableBackgroundRecording": false
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -15,7 +28,8 @@
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png"
       },
-      "package": "com.cloudpc7.rockmymusic"
+      "package": "com.cloudpc7.rockmymusic",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"

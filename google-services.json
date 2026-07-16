@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722714764659",
+    "project_id": "rockmymusic",
+    "storage_bucket": "rockmymusic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722714764659:android:d348b8cc1fc17af4a15106",
+        "android_client_info": {
+          "package_name": "com.clouddropdesigns.rockmymusic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATSF9WQPw332Bal7yRjiCV3Pleg_e7E_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

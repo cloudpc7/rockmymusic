@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -7,24 +9,24 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
+import AppImage from '../../../ui/components/AppImage';
 import Button from '../../../ui/components/Button';
 import Input from '../../../ui/components/Input';
 import RockTitle from '../../../ui/components/RockTitle';
-import AppImage from '../../../ui/components/AppImage';
 import { colors } from '../../../theme/colors';
 
-
-const musicManImage = require('../../../../assets/rockman-v2.png');
+const musicManImage = require('../../../assets/rockmymusicman.png');
 
 const LoginScreen = () => {
-  // Rise under the intro dissolve so UI doesn't "pop" after the video freezes.
+  const insets = useSafeAreaInsets();
+
   const [enterMotion] = useState(() => ({
     enterDelayMs: 120,
     fadeMs: 680,
     staggerMs: 90,
-    titleOffsetY: 14,
+    titleOffsetY: 18,
     figureOffsetY: 16,
-    formOffsetY: 14,
+    formOffsetY: 16,
   }));
 
   const titleOpacity = useSharedValue(0);
@@ -69,7 +71,6 @@ const LoginScreen = () => {
     titleY,
   ]);
 
-  // Reanimated enter motion — StyleSheet/className cannot drive shared values.
   const titleAnimStyle = useAnimatedStyle(() => ({
     opacity: titleOpacity.value,
     transform: [{ translateY: titleY.value }],
@@ -86,12 +87,27 @@ const LoginScreen = () => {
   }));
 
   const handleGoogleSignIn = () => {
-    // TODO: wire up Google sign-in
+
   };
 
   return (
-    <View className="screen-center">
-      <View className="login-overlay">
+    <View className="login-screen">
+      <LinearGradient
+        colors={['#2a2a2c', '#1a1a1c', '#121214', '#1c1c1e']}
+        locations={[0, 0.35, 0.7, 1]}
+        start={{ x: 0.5, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
+        className="login-bg"
+        style={StyleSheet.absoluteFill}
+      />
+
+      <View
+        className="login-overlay"
+        style={{
+          paddingTop: Math.max(insets.top, 16),
+          paddingBottom: Math.max(insets.bottom, 24),
+        }}
+      >
         <Animated.View className="login-title-wrap" style={titleAnimStyle}>
           <RockTitle />
         </Animated.View>
@@ -112,6 +128,8 @@ const LoginScreen = () => {
             inputClassName="login-input"
             placeholder="Enter Phone Number"
             placeholderTextColor={colors.muted}
+            keyboardType="phone-pad"
+            autoComplete="tel"
           />
           <Button
             btnClassName="login-control"
@@ -126,13 +144,12 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 
-// Neon glow needs RN shadow* / elevation APIs that Tailwind cannot fully express.
 const styles = StyleSheet.create({
   inputGlow: {
-    shadowColor: colors.cyan,
+    shadowColor: '#D4A84B',
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 20,
-    elevation: 20,
+    shadowOpacity: 0.45,
+    shadowRadius: 12,
+    elevation: 10,
   },
 });
